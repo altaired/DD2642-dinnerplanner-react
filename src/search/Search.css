@@ -8,3 +8,8 @@
 .dish-item-box img {
     width: 90px;
 }
+
+.input-group {
+    margin: 10px;
+    background-color: grey;
+}
