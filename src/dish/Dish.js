@@ -23,6 +23,7 @@ class Dish extends Component {
     render() {
         return (
             <div>
+                {this.props.isFetching && <p>Loading...</p>}
                 <p>{JSON.stringify(this.props.dish)}</p>
                 <button onClick={() => this.props.addToMenu(this.props.dish)}>Add to Menu</button>
             </div>
