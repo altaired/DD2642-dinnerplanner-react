@@ -55,6 +55,7 @@ class Search extends Component {
             <div className="container">
                 <Sidebar className="col-sm-12 col-md-3"></Sidebar>
                 <div>
+                    {this.props.isFetching && <p>Im Loading</p>}
                     <div className="input-group col-6">
                         <select className="form-control" id="exampleFormControlSelect1" value={this.state.searchType} onChange={(evt) => this.onSelectChange(evt)}>
                             <option value="main course">Main Course</option>
