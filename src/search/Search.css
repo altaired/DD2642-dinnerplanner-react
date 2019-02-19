@@ -1,0 +1,10 @@
+.dish-item-box {
+    width: 200px;
+    height: 400px;
+    background-color: grey;
+    margin: 10px;
+}
+
+.dish-item-box img {
+    width: 90px;
+}
