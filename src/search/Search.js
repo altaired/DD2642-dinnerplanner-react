@@ -7,9 +7,6 @@ import {
 import {
     requestDishes
 } from '../actions/dishActions';
-import {
-    addToMenu
-} from '../actions/menuActions';
 import DishItem from './DishItem';
 import PropTypes from 'prop-types';
 import './Search.css';
@@ -26,8 +23,6 @@ class Search extends Component {
         const dishItems = this.props.dishes.map(dish => (
             <div key={dish.id} className={dishItemStyle}>
                 <DishItem dish={dish} />
-                <button onClick={() => this.props.addToMenu(dish)}> Add To Menu
-            </button>
             </div>
         ))
         return (
@@ -40,8 +35,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-    requestDishes: PropTypes.func.isRequired,
-    addToMenu: PropTypes.func.isRequired
+    requestDishes: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -52,6 +46,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {
-    requestDishes,
-    addToMenu
+    requestDishes
 })(Search)

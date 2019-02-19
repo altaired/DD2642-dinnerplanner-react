@@ -11,6 +11,7 @@ import {
 import './App.css';
 import Welcome from './welcome/Welcome';
 import Search from './search/Search';
+import Dish from './dish/Dish';
 import store from './store';
 
 
@@ -34,6 +35,7 @@ class App extends Component {
             }
             <Route exact path="/" component={Welcome} />
             <Route path="/search" component={Search} />
+            <Route path="/dish/:id" component={Dish} />
           </header>
         </div>
       </Provider>
