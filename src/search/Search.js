@@ -26,9 +26,9 @@ class Search extends Component {
             </div>
         ))
         return (
-            <div>
-                <Sidebar></Sidebar>
-                <div className="row">{dishItems}</div>
+            <div className="row">
+                <Sidebar className="col-sm-12 col-md-3"></Sidebar>
+                <div className="row col-sm-12 col-md-9=">{dishItems}</div>
             </div>
         )
     }
