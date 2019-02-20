@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import './DishItem.css'
 
 
 export default class DishItem extends Component {
@@ -9,15 +10,27 @@ export default class DishItem extends Component {
 
     getDishURL = id => `/dish/${id}`;
 
+    truncate = string => {
+        if (string.length > 25)
+            return string.substring(0, 25) + '...';
+        else
+            return string;
+    };
+
     render() {
         const item = this.props.dish
         return (
-            <Link to={this.getDishURL(item.id)}>
-                <div >
+
+            <div className="bounding-dish-box">
+                <div className="dish-item">
                     <img src={this.getImageURL(item.id)} alt={item.title}></img>
-                    <h3>{item.title}</h3>
+                    <Link to={this.getDishURL(item.id)}>
+                        <h3 className="dish-title">{this.truncate(item.title)}</h3>
+                    </Link>
+
                 </div>
-            </Link>
+            </div>
+
         )
     }
 }

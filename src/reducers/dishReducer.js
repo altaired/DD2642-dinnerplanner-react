@@ -19,26 +19,30 @@ export default function (state = initialState, action) {
                 return {
                     ...state,
                     items: action.payload,
-                    isFetching: false
+                    isFetching: false,
+                    error: ""
                 }
 
             case FETCHED_DISH:
                 return {
                     ...state,
                     item: action.payload,
-                    isFetching: false
+                    isFetching: false,
+                    error: ""
                 }
 
             case REQUEST_DISH:
                 return {
                     ...state,
-                    isFetching: true
+                    isFetching: true,
+                    error: ""
                 }
 
             case REQUEST_DISHES:
                 return {
                     ...state,
-                    isFetching: true
+                    isFetching: true,
+                    error: ""
                 }
 
             default:

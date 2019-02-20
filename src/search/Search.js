@@ -18,7 +18,7 @@ class Search extends Component {
         super(props);
         this.state = {
             searchTerm: '',
-            searchType: ''
+            searchType: 'main dish'
         }
     }
 
@@ -45,44 +45,45 @@ class Search extends Component {
     }
 
     render() {
+        if (this.props.error && this.props.error !== "") {
+            return (<p>No network connection</p>)
+        }
         const dishItemStyle = 'dish-item-box';
         const dishItems = this.props.dishes.map(dish => (
             <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={dish.id}>
-            <div  className={dishItemStyle}>
-                <DishItem dish={dish} />
-            </div>
+                <div className={dishItemStyle}>
+                    <DishItem dish={dish} />
+                </div>
             </div>
         ))
         return (
             <div className="container-fluid">
-            <div className ="row">
-            <div className="col-sm-12 col-md-3">
-                <Sidebar ></Sidebar>
-            </div>
-                <div className="col-sm-12 col-md-9 row backg">
-                    {this.props.isFetching && <p>Im Loading</p>}
-                    <div className="input-group py-2 px-5">
-                        <select className="form-control" id="exampleFormControlSelect1" value={this.state.searchType} onChange={(evt) => this.onSelectChange(evt)}>
-                            <option value="main course">Main Course</option>
-                            <option value="side dish">Side Dish</option>
-                            <option value="dessert">Dessert</option>
-                            <option value="appetizer">Appetizer</option>
-                            <option value="salad">Salad</option>
-                            <option value="bread">Bread</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="soup">Soup</option>
-                            <option value="beverage">Beverage</option>
-                            <option value="sauce">Sauce</option>
-                            <option value="drink">Drink</option>
-                        </select>
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="inputGroup-sizing-default">Search</span>
-                        </div>
-                        <input type="text" value={this.state.searchTerm} onChange={(evt) => this.onInputChange(evt)} className="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
-                        <button className="btn btn-light" onClick={() => this.search()} id="search">Search</button>
+                <div className="row">
+                    <div className="col-sm-12 col-md-3">
+                        <Sidebar ></Sidebar>
                     </div>
-                    <div className="row col-sm-12 col-md-12  ">{dishItems}</div>
-                </div>
+
+                    <div className="col-sm-12 col-md-9 row">
+                        <div className="input-group py-2 px-5 col-12">
+                            <select className="form-control col-sm-12" id="exampleFormControlSelect1" value={this.state.searchType} onChange={(evt) => this.onSelectChange(evt)}>
+                                <option value="main course">Main Course</option>
+                                <option value="side dish">Side Dish</option>
+                                <option value="dessert">Dessert</option>
+                                <option value="appetizer">Appetizer</option>
+                                <option value="salad">Salad</option>
+                                <option value="bread">Bread</option>
+                                <option value="breakfast">Breakfast</option>
+                                <option value="soup">Soup</option>
+                                <option value="beverage">Beverage</option>
+                                <option value="sauce">Sauce</option>
+                                <option value="drink">Drink</option>
+                            </select>
+                            <input type="text" value={this.state.searchTerm} onChange={(evt) => this.onInputChange(evt)} className="form-control col-sm-9" aria-label="Default" aria-describedby="inputGroup-sizing-default" />
+                            <button className="btn btn-light col-sm-3" onClick={() => this.search()} id="search">Search</button>
+                        </div>
+                        {this.props.isFetching && <p>Loading...</p>}
+                        <div className="row col-sm-12 col-md-12">{dishItems}</div>
+                    </div>
                 </div>
             </div>
         )

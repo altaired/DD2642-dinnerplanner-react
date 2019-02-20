@@ -41,15 +41,15 @@ class Sidebar extends Component {
           <div className="d-lg-block d-md-block">
             <div className="bleee">People</div>
             <div className="input-group-lg">
-            <input
-            className="form-control"
-              type="number"
-              value={this.props.guests}
-              onChange={this.onNumberOfGuestsChanged}
-              min="1"
-            />
+              <input
+                className="form-control"
+                type="number"
+                value={this.props.guests}
+                onChange={this.onNumberOfGuestsChanged}
+                min="1"
+              />
             </div>
-            <table className ="table table-hover table-dark " id="sidebarTable">
+            <table className="table table-hover table-dark " id="sidebarTable">
               <tbody>
                 <tr>
                   <th>Dish Name</th>
@@ -64,26 +64,26 @@ class Sidebar extends Component {
                       </td>
                       <td className="">
                         {'SEK ' +
-            Number(dish.extendedIngredients
-                .map(ingr => ingr.amount)
-                .reduce((acc, val) => acc + val) * this.props.guests).toFixed(2)}
+                          Number(dish.extendedIngredients
+                            .map(ingr => ingr.amount)
+                            .reduce((acc, val) => acc + val) * this.props.guests).toFixed(2)}
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
-            {/*Total number of guests: {this.state.numberOfGuests}*/}       
-             <Link to="/overview">
-            <button className="btn btn-light" id="confirmDinner">Confirm order</button>
+            {/*Total number of guests: {this.state.numberOfGuests}*/}
+            <Link to="/overview">
+              <button className="btn btn-light" id="confirmDinner">Confirm order</button>
             </Link>
           </div>
         </Collapse>
 
-        <h5 className="my-3" id="total-due">{ 'Total: SEK ' + this.props.menu
-			.flatMap(dish => dish.extendedIngredients)
-			.reduce((acc, val) => acc + val.amount * this.props.guests, 0).toFixed(2)
-	}</h5>
+        <h5 className="my-3" id="total-due">{'Total: SEK ' + this.props.menu
+          .flatMap(dish => dish.extendedIngredients)
+          .reduce((acc, val) => acc + val.amount * this.props.guests, 0).toFixed(2)
+        }</h5>
       </div>
 
     );

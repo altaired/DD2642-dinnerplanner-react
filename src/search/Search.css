@@ -1,19 +1,13 @@
 .dish-item-box {
-    min-width: 170px;
+    min-width: 200px;
     padding: 10px;
 }
 
 .dish-item-box img {
     width: 90px;
+    margin: 10px;
 }
 
 .input-group {
-    
     background-color: grey;
 }
-
-.backg{
-    background-color: rgb(39, 51, 46)
-    
-}
-

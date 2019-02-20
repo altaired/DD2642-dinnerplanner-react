@@ -9,7 +9,8 @@ export const requestDishes = (type, filter) => dispatch => {
     dispatch(fetchDishes(type, filter));
     dispatch({
         type: REQUEST_DISHES,
-        status: 'success'
+        status: 'success',
+        error: ""
     })
 }
 
@@ -17,13 +18,16 @@ export const requestDish = id => dispatch => {
     dispatch(fetchDish(id));
     dispatch({
         type: REQUEST_DISH,
-        status: 'success'
+        status: 'success',
+        error: ""
     })
 }
 
-export const fetchDishes = (type = 'main dish', filter = '') => dispatch => {
+export const fetchDishes = (type = 'main dish', filter) => dispatch => {
     const nbrItems = 50;
-    fetch(`http://sunset.nada.kth.se:8080/iprog/group/50/recipes/search?type="${type}"&query="${filter}"&number=${nbrItems}`, {
+    let url = `http://sunset.nada.kth.se:8080/iprog/group/50/recipes/search?type="${type}"&number=${nbrItems}`
+    if (filter && filter !== "") url += '&query="' + filter + '"';
+    fetch(url, {
             headers: {
                 'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
             }
@@ -32,7 +36,8 @@ export const fetchDishes = (type = 'main dish', filter = '') => dispatch => {
         .then(data => dispatch({
             type: FETCHED_DISHES,
             payload: data.results,
-            status: 'success'
+            status: 'success',
+            error: ""
         })).catch(error => dispatch({
             type: FETCHED_DISHES,
             status: 'error',
@@ -50,7 +55,8 @@ export const fetchDish = id => dispatch => {
         .then(data => dispatch({
             type: FETCHED_DISH,
             payload: data,
-            status: 'success'
+            status: 'success',
+            error: ""
         })).catch(error => dispatch({
             type: FETCHED_DISH,
             status: 'error',

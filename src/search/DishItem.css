@@ -1,0 +1,9 @@
+.dish-item {
+    margin: 10px;
+    background-color: grey;
+    height: 220px;
+}
+
+.dish-title {
+    color: white;
+}
