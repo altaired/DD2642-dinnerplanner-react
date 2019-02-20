@@ -1,0 +1,9 @@
+.bakgru{
+    background-color: lightyellow;
+    margin: 10px 0px;
+    -webkit-text-fill-color: black;
+}
+
+p{
+    font-size:20px;
+}

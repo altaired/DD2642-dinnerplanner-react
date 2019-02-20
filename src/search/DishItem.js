@@ -13,7 +13,7 @@ export default class DishItem extends Component {
         const item = this.props.dish
         return (
             <Link to={this.getDishURL(item.id)}>
-                <div className="col-sm-12 col-md-6 col-lg-3">
+                <div >
                     <img src={this.getImageURL(item.id)} alt={item.title}></img>
                     <h3>{item.title}</h3>
                 </div>

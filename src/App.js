@@ -12,6 +12,8 @@ import './App.css';
 import Welcome from './welcome/Welcome';
 import Search from './search/Search';
 import Dish from './dish/Dish';
+import Printout from './printout/Printout';
+import Overview from './overview/Overview';
 import {
   createStore,
   applyMiddleware
@@ -52,6 +54,8 @@ class App extends Component {
             <Route exact path="/" component={Welcome} />
             <Route path="/search" component={Search} />
             <Route path="/dish/:id" component={Dish} />
+            <Route path="/printout" component={Printout} />
+            <Route path="/overview" component={Overview}/>
           </header> </div>
       </Provider>
     );

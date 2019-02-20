@@ -1,7 +1,5 @@
 .dish-item-box {
-    width: 200px;
-    height: 400px;
-    background-color: grey;
+    min-width: 170px;
     padding: 10px;
 }
 
@@ -10,6 +8,12 @@
 }
 
 .input-group {
-    margin: 10px;
+    
     background-color: grey;
 }
+
+.backg{
+    background-color: rgb(39, 51, 46)
+    
+}
+

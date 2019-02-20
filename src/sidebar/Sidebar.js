@@ -5,6 +5,7 @@ import Collapse from 'react-bootstrap/Collapse';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeGuests } from '../actions/guestActions';
+import { Link } from "react-router-dom";
 
 
 class Sidebar extends Component {
@@ -19,7 +20,7 @@ class Sidebar extends Component {
 
   // our handler for the input's on change event
   onNumberOfGuestsChanged = e => {
-    this.props.changeGuests(e.target.value);
+    this.props.changeGuests(Number(e.target.value));
   };
 
 
@@ -39,16 +40,18 @@ class Sidebar extends Component {
         <Collapse in={this.state.open} className="d-lg-block d-md-block">
           <div className="d-lg-block d-md-block">
             <div className="bleee">People</div>
+            <div className="input-group-lg">
             <input
-              className="ble"
+            className="form-control"
               type="number"
               value={this.props.guests}
               onChange={this.onNumberOfGuestsChanged}
-              min="0"
+              min="1"
             />
-            <table id="sidebarTable">
+            </div>
+            <table className ="table table-hover table-dark " id="sidebarTable">
               <tbody>
-                <tr className="border">
+                <tr>
                   <th>Dish Name</th>
                   <th>Cost</th>
                 </tr>
@@ -60,19 +63,27 @@ class Sidebar extends Component {
                         {dish.title}
                       </td>
                       <td className="">
-                        5
+                        {'SEK ' +
+            Number(dish.extendedIngredients
+                .map(ingr => ingr.amount)
+                .reduce((acc, val) => acc + val) * this.props.guests).toFixed(2)}
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
-            {/*Total number of guests: {this.state.numberOfGuests}*/}
+            {/*Total number of guests: {this.state.numberOfGuests}*/}       
+             <Link to="/overview">
             <button className="btn btn-light" id="confirmDinner">Confirm order</button>
+            </Link>
           </div>
         </Collapse>
 
-        <h5 id="total-due">{this.props.guests}</h5>
+        <h5 className="my-3" id="total-due">{ 'Total: SEK ' + this.props.menu
+			.flatMap(dish => dish.extendedIngredients)
+			.reduce((acc, val) => acc + val.amount * this.props.guests, 0).toFixed(2)
+	}</h5>
       </div>
 
     );

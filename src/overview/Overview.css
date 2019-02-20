@@ -1,0 +1,10 @@
+.divss{
+    max-width: 240px ;
+}
+
+.totals{
+    border-block-end: 1px;
+    border-block-end-color: aqua;
+    border: 1px;
+    border-color: aqua;
+}
